@@ -22,7 +22,7 @@ createServer(async(request,native)=>{
     return;
   }
   const requested=url.pathname.startsWith('/join/')?'/index.html':url.pathname==='/'?'/index.html':url.pathname;
-  const file=normalize(join(root,requested));
-  if(!file.startsWith(root)||!existsSync(file)){native.statusCode=404;native.end('Not found');return}
+  const publicDir=join(root,'public'),file=normalize(join(publicDir,requested));
+  if(!file.startsWith(publicDir)||!existsSync(file)){native.statusCode=404;native.end('Not found');return}
   native.setHeader('content-type',types[extname(file)]||'application/octet-stream');createReadStream(file).pipe(native);
 }).listen(port,()=>console.log(`VoiceMe server: http://localhost:${port}`));
