@@ -1,0 +1,1 @@
+.room-heading{display:flex;justify-content:space-between;align-items:start}.room-heading button{border:0;background:transparent;color:var(--accent);font:700 13px Tahoma,Arial,sans-serif;padding:0;cursor:pointer}.room-heading button:focus-visible{outline:3px solid var(--focus);outline-offset:2px}

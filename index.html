@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A private, lightweight voice call for two people.">
+  <title>VoiceMe — simple voice calls</title><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/css/controls.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar"><a class="wordmark" href="/" aria-label="VoiceMe home">VoiceMe</a><button class="icon-button" id="theme-button" type="button" aria-label="Switch theme" title="Switch theme">◐</button></header>
+    <section class="panel" id="join-view" aria-labelledby="join-title">
+      <p class="eyebrow">Private voice, simply</p><h1 id="join-title">Start a room.</h1><p class="lede">Choose a name and room code. Share the link with one person.</p>
+      <form id="join-form" novalidate>
+        <label for="display-name">Your name</label><input id="display-name" name="name" autocomplete="name" maxlength="48" required placeholder="e.g. Maya">
+        <label for="room-code">Room code</label><div class="room-field"><span aria-hidden="true">/join/</span><input id="room-code" name="room" autocapitalize="characters" maxlength="64" required placeholder="FIRSTROOM"></div>
+        <p class="form-error" id="form-error" role="alert"></p><button class="primary" type="submit">Join room</button>
+      </form>
+      <p class="quiet">No accounts. No recordings. Your call is encrypted by WebRTC.</p>
+    </section>
+    <section class="panel call-view" id="call-view" hidden aria-labelledby="call-title">
+      <div class="room-heading"><p class="eyebrow" id="room-label">Room</p><button id="name-button" type="button">Edit name</button></div><h1 id="call-title">Waiting for someone.</h1><p class="lede" id="call-detail">Share this private link to begin.</p>
+      <div class="share-row"><input id="share-link" readonly aria-label="Room invite link"><button id="copy-button" class="secondary" type="button">Copy</button></div>
+      <div class="participant" id="participant-card" hidden><span class="avatar" id="remote-initial" aria-hidden="true">V</span><span><strong id="remote-name">Participant</strong><small id="remote-status">Connecting</small></span><span class="speaking-dot" id="speaking-dot" aria-label="Not speaking"></span></div>
+      <div class="meter-wrap"><span>Microphone</span><div class="meter" aria-label="Live microphone level"><i id="meter-bar"></i></div></div>
+      <div class="controls" aria-label="Call controls"><button class="control" id="mute-button" type="button" aria-pressed="false"><b>⌁</b><span>Mute</span></button><button class="control" id="deafen-button" type="button" aria-pressed="false"><b>◒</b><span>Deafen</span></button><button class="control" id="settings-button" type="button" aria-expanded="false" aria-controls="settings"><b>⚙</b><span>Settings</span></button><button class="control leave" id="leave-button" type="button"><b>×</b><span>Leave</span></button></div>
+      <aside id="settings" class="settings" hidden aria-label="Audio settings">
+        <label for="input-device">Microphone</label><select id="input-device"></select><label for="output-device">Speaker</label><select id="output-device"></select>
+        <label class="toggle"><input type="checkbox" id="noise-toggle" checked> Noise suppression</label><label class="toggle"><input type="checkbox" id="echo-toggle" checked> Echo cancellation</label><label class="toggle"><input type="checkbox" id="gain-toggle" checked> Automatic gain control</label>
+        <p class="quiet">Changing microphone updates the call without leaving.</p>
+      </aside>
+    </section>
+  </main><p id="announcer" class="sr-only" aria-live="polite"></p><audio id="remote-audio" autoplay></audio>
+  <script type="module" src="/js/app.js"></script>
+</body></html>

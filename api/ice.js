@@ -1,0 +1,2 @@
+import {json} from './_lib.js';
+export default function handler(req,res){if(req.method!=='GET')return json(res,405,{error:'Method not allowed'});try{const custom=JSON.parse(process.env.ICE_SERVERS||'[]');if(!Array.isArray(custom))throw new Error();const fallback=[{urls:'stun:stun.l.google.com:19302'},{urls:'stun:stun1.l.google.com:19302'}];return json(res,200,{iceServers:custom.length?custom:[...fallback,...custom]})}catch{return json(res,500,{error:'ICE_SERVERS must be a JSON array'})}}
