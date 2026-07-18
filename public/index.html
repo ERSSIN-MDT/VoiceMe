@@ -19,6 +19,16 @@
         <p class="form-error" id="form-error" role="alert"></p><button class="primary" type="submit">Join room</button>
       </form>
       <p class="quiet">No accounts. No recordings. Your call is encrypted by WebRTC.</p>
+      <div class="mic-test-wrap">
+        <button class="mic-test-btn" id="mic-test-btn" type="button">
+          <span class="material-symbols-outlined">mic</span> Test your mic
+        </button>
+        <div class="mic-test-panel" id="mic-test-panel" hidden>
+          <p class="mic-test-prompt" id="mic-test-prompt">Loading…</p>
+          <div class="meter" aria-label="Mic test level" style="margin: 12px 0;"><i id="test-meter-bar"></i></div>
+          <button class="mic-test-next" id="mic-test-next" type="button">Next phrase ↻</button>
+        </div>
+      </div>
     </section>
     <section class="panel call-view" id="call-view" hidden aria-labelledby="call-title">
       <div class="room-heading"><p class="eyebrow" id="room-label">Room</p><button id="name-button" type="button">Edit name</button></div><h1 id="call-title">Waiting for someone.</h1><p class="lede" id="call-detail">Share this private link to begin.</p>

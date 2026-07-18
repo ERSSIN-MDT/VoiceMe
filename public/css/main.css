@@ -419,3 +419,69 @@ button:focus-visible {
     transition: none !important;
   }
 }
+
+.mic-test-wrap {
+  margin-top: 20px;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+}
+
+.mic-test-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font: 13px Tahoma, sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mic-test-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.mic-test-btn span {
+  font-size: 16px;
+}
+
+.mic-test-panel {
+  margin-top: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.mic-test-prompt {
+  font-family: serif;
+  font-size: 18px;
+  color: var(--ink);
+  line-height: 1.4;
+  margin: 0;
+  padding: 12px 0;
+  border-left: 3px solid var(--accent);
+  padding-left: 14px;
+}
+
+.mic-test-next {
+  width: fit-content;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  border-radius: 6px;
+  padding: 6px 14px;
+  font: 12px Tahoma, sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mic-test-next:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
