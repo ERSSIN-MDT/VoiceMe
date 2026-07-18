@@ -8,4 +8,4 @@ export async function getRoom(room){const value=await redis(['GET',key(room)]);r
 export async function setRoom(room,value){await redis(['SET',key(room),JSON.stringify(value),'EX','90'])}
 export async function removeRoom(room){await redis(['DEL',key(room)])}
 export async function withLock(room,operation){const lock=`${key(room)}:lock`,owner=crypto.randomUUID();for(let i=0;i<12;i++){if(await redis(['SET',lock,owner,'NX','PX','5000'])){try{return await operation()}finally{await redis(['EVAL',"if redis.call('get', KEYS[1]) == ARGV[1] then return redis.call('del', KEYS[1]) else return 0 end",'1',lock,owner])}}await new Promise(resolve=>setTimeout(resolve,80))}throw new Error('ROOM_BUSY')}
-export function active(room){return room?.participants.filter(p=>Date.now()-p.seen<30000)||[]}
+export function active(room){return room?.participants.filter(p=>Date.now()-p.seen<10000)||[]}

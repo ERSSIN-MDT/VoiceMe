@@ -6,6 +6,7 @@ async start(deviceId){
   this.rawStream=next;
   try{
     this.context=new AudioContext();
+    if(this.context.state==='suspended')await this.context.resume();
     const source=this.context.createMediaStreamSource(this.rawStream);
     let lastNode=source;
     if(this.settings.noiseSuppression){
